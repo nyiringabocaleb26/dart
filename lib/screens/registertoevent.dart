@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MeetingRegisterApp());
+  runApp(MyApp());
 }
 
-class MeetingRegisterApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MeetingRegisterScreen(),
+      home: MeetingRegisterApp(),
     );
   }
 }
 
-class MeetingRegisterScreen extends StatelessWidget {
+class MeetingRegisterApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,10 +24,27 @@ class MeetingRegisterScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.network(
-                'https://storage.googleapis.com/a1aa/image/JNYlq5VdsSZXKehL5pxC2os3HFr2dt-CQGZmDFC2Mag.jpg',
-                height: 50,
-                width: 50,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 25,
+                    height: 70,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.pink,
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(7, 60, 0, 0),
+                    width: 25,
+                    height: 70,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.pink,
+                    ),
+                  ),
+                ],
               ),
               SizedBox(height: 20),
               Text(
@@ -42,38 +59,62 @@ class MeetingRegisterScreen extends StatelessWidget {
                 'Cybersecurity',
                 style: TextStyle(
                   color: Colors.yellow[700],
-                  fontSize: 16,
                 ),
               ),
               SizedBox(height: 20),
-              _buildTextField(
-                context,
-                hintText: 'Name',
-                icon: Icons.person,
-              ),
-              SizedBox(height: 10),
-              _buildTextField(
-                context,
-                hintText: 'Email',
-                icon: Icons.email,
-              ),
-              SizedBox(height: 10),
-              _buildTextField(
-                context,
-                hintText: 'Location',
-                icon: Icons.location_on,
-              ),
-              SizedBox(height: 10),
-              _buildTextField(
-                context,
-                hintText: 'Phone Number',
-                icon: Icons.phone,
+              // Adjusted TextField sizes
+              SizedBox(
+                width: 300, // Set a fixed width for the TextFields
+                child: TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Name',
+                    border: UnderlineInputBorder(),
+                    prefixIcon: Icon(Icons.person),
+                    contentPadding: EdgeInsets.symmetric(vertical: 10), // Reduced padding
+                  ),
+                ),
               ),
               SizedBox(height: 20),
+              SizedBox(
+                width: 300,
+                child: TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                    border: UnderlineInputBorder(),
+                    prefixIcon: Icon(Icons.email),
+                    contentPadding: EdgeInsets.symmetric(vertical: 10), // Reduced padding
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              SizedBox(
+                width: 300,
+                child: TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Location',
+                    border: UnderlineInputBorder(),
+                    prefixIcon: Icon(Icons.location_on),
+                    contentPadding: EdgeInsets.symmetric(vertical: 10), // Reduced padding
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              SizedBox(
+                width: 300,
+                child: TextField(
+                  decoration: InputDecoration(
+                    labelText: 'Phone Number',
+                    border: UnderlineInputBorder(),
+                    prefixIcon: Icon(Icons.phone),
+                    contentPadding: EdgeInsets.symmetric(vertical: 10), // Reduced padding
+                  ),
+                ),
+              ),
+              SizedBox(height: 40),
               ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-
+                  backgroundColor: Colors.red,
                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
@@ -89,18 +130,6 @@ class MeetingRegisterScreen extends StatelessWidget {
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildTextField(BuildContext context, {required String hintText, required IconData icon}) {
-    return TextField(
-      decoration: InputDecoration(
-        hintText: hintText,
-        suffixIcon: Icon(icon, color: Colors.grey),
-        border: UnderlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey),
         ),
       ),
     );
