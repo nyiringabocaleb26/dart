@@ -11,7 +11,7 @@ class RegisterScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-                margin: EdgeInsets.fromLTRB(0, 0, 0, 80),
+                margin: EdgeInsets.fromLTRB(0, 0, 0,90),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   spacing: 10,
@@ -34,17 +34,25 @@ class RegisterScreen extends StatelessWidget {
                   ],
                 ),
             ),
-            SizedBox(height: 20),
-            _Input(Icons.person, "Username"),
-            _Input(Icons.email, "Email"),
-            _Input(Icons.phone, "Phone Number"),
-            _Input(Icons.lock, "Password", isPassword: true),
-            _Input(Icons.lock, "Confirm Password", isPassword: true,),
-            SizedBox(height: 20),
+            // SizedBox(height: 20),
+            
+            Container(
+              margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+              child: Column(
+                children: [
+                  Input(Icons.person,"Username","Username" ),
+                  Input(Icons.email, "Email","Email"),
+                  Input(Icons.phone, "Phone Number","Phone Number"),
+                  Input(Icons.lock, "Password","Password",isPassword: true),
+                  Input(Icons.lock, "Confirm Password","Confirm password", isPassword: true),
+                ],
+              ),
+            ),
+            SizedBox(height: 10),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.pinkAccent,
-                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                padding: EdgeInsets.symmetric(horizontal: 45, vertical: 10),
               ),
               onPressed: () {
                 Navigator.push(
@@ -54,7 +62,7 @@ class RegisterScreen extends StatelessWidget {
               },
               child: Text("Register", style: TextStyle(color: Colors.white)),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 5),
             TextButton(
               onPressed: () {},
               
@@ -76,16 +84,33 @@ class RegisterScreen extends StatelessWidget {
       ),
     );
   }
-
-  Widget _Input(IconData icon, String hint, {bool isPassword = false}) {
+  Widget Input(IconData icon, String hint,String label, {bool isPassword = false}) {
     return Padding(
+
       padding: const EdgeInsets.symmetric(vertical: 8.0),
-      child: TextFormField(
-        obscureText: isPassword,
-        decoration: InputDecoration(
-          prefixIcon: Icon(icon, color: Colors.grey),
-        
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            margin: EdgeInsets.fromLTRB(0, 0,120, 0),
+            child: Text(
+              label,
+              style:TextStyle(
+                fontWeight: FontWeight.w900,
+                fontSize: 15,
+                
+              ) ,
+            ),
+          ),
+          TextFormField(
+            obscureText: isPassword,
+            decoration: InputDecoration(
+              labelText: hint,
+              prefixIcon: Icon(icon, color: Colors.grey),
+            
+            ),
+          ),
+        ],
       ),
     );
   }
